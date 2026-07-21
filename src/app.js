@@ -20,6 +20,17 @@ app.get("/notes",(req,res) =>{
 })
 
 
+app.delete("/notes/:index", (req,res) =>{
+    const {index} = req.params;
+    notes.splice(index,1)
+    res.status(200).json({message:"note is deleted"})
+})
+
+app.patch("/notes/:index",(req,res) => {
+    const {index} = req.params;
+    notes[index] = req.body
+    res.status(200).json({message:"note is updated"})
+})    
 
 module.exports = app;
 
